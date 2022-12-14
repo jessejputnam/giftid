@@ -20,22 +20,15 @@ const UserSchema = new Schema(
       index: true
     },
     password: { type: String, required: true },
+
     firstname: { type: String, maxLength: 30, required: true },
     lastname: { type: String, maxLength: 30, required: true },
-    region: { type: String, required: true },
-    isVerified: { type: Boolean, default: false },
+
     resetPasswordToken: { type: String, required: false },
     resetPasswordExpires: { type: Date, required: false },
 
-    creator: {
-      name: String,
-      genre: String,
-      page: { type: Schema.Types.ObjectId, ref: "Page" },
-      stripeId: { type: String },
-      stripeOnboardComplete: { type: Boolean },
-      stripeStatus: { type: String },
-      stripeIssue: { type: Boolean }
-    }
+    friend_list: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    gift_list: [{ type: Schema.Types.ObjectId, ref: "Gift" }]
   },
   { timestamps: true }
 );

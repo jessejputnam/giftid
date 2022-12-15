@@ -1,8 +1,103 @@
+/* 
+  --------------------- STYLE GUIDE --------------------- 
+
+  Color: 
+  # Lavender: #cdb4db
+  # Pink: #cffc8dd
+  # Dark Pink: #ffafcc
+  # Light Blue: #bde0fe
+  # Dark Blue: #a2d2ff
+
+  FONT
+  - Handwriting Cursive
+  # font-family: 'Homemade Apple', cursive;
+  - Handwriting Print
+  # font-family: 'Indie Flower', cursive;
+  - Fancy Cursive
+  # font-family: 'Passions Conflict', cursive;
+
+*/
+
+/* --------------------- FORMATTING --------------------- */
+
+* {
+  font-family: "Indie Flower", cursive;
+  padding: 0;
+  margin: 0;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  background-color: #ffc8dd79;
 }
 
 a {
-  color: #00B7FF;
+  color: rgb(86, 86, 86);
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* --------------------- HEADER --------------------- */
+header {
+  background-color: #cdb4db;
+  height: 85px;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.398);
+}
+
+.header-wrapper {
+  height: 100%;
+  padding: 0px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 73px;
+  filter: contrast(100);
+  filter: drop-shadow(0 1px 3px rgb(66, 9, 104));
+}
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 240px;
+}
+
+.header-btn {
+  background: linear-gradient(
+    to bottom right,
+    #ffafcc,
+    #ffafcc,
+    #ffafcc,
+    #ffafcc,
+    #ffafcc,
+    #ffc8dd,
+    #ffafcc,
+    #ffafcc,
+    #ffafcc
+  );
+  background-color: #ffafcc;
+  padding: 3px 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.737);
+
+  transition: filter 0.4s;
+}
+
+@media (hover: hover) {
+  .header-btn:hover {
+    filter: hue-rotate(-90deg);
+  }
+}
+
+/* --------------------- CONTENT --------------------- */
+.content-wrapper {
+  margin: 15px;
+  height: 100%;
 }

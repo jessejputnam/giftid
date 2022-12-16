@@ -1,0 +1,15 @@
+extends layout 
+
+block content
+  if error 
+    p= error
+
+  form.form-wrapper(method='POST' action='') 
+    h2(style='text-align:center')= title 
+    div.form-control 
+      label(for='text' style='margin-left:15px') Email 
+      textarea#text(name="text", cols="30", rows="10" placeholder="Spicy foods") 
+
+    div.form-control-btns 
+      a(href="/") Cancel
+      button.btn(type="submit") Submit

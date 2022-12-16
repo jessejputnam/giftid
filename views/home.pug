@@ -1,11 +1,24 @@
 extends layout 
 
 block content 
-  div.index-wrapper
-    div.title-container
-      h1= title
-      img.book-img(src="/images/book-ribbon.png", alt="Present")
-    h2 Welcome, #{currentUser.firstname}
+  div.home-wrapper 
+    div.home-title-wrapper
+      div.title-container.home-title
+        h1= title
+        img.book-img(src="/images/book-ribbon.png", alt="Present")
+      h2 Welcome, #{currentUser.firstname}
 
-    div.general 
-      
+    div.home-content
+      div
+        h3(style="text-decoration:underline") My General Gift Hints  
+          span(style="margin-left:10px") 
+            a(href="/edit-preferences" style="font-size:0.9rem") | Edit Your Gift Hints |
+        p I generally like...
+        div 
+          p= currentUser.gift_preferences
+      div 
+        h3(style="text-decoration:underline") Gifts I'm Buying 
+        ul 
+          each gift in currentUser.gifted_items
+            p= gift.name
+

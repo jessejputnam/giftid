@@ -227,3 +227,50 @@ header {
   color: white;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.687);
 }
+
+/* --------------------- Home --------------------- */
+
+.home-wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+  align-items: center;
+}
+
+.home-title-wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 0 3px 0px rgba(0, 0, 0, 0.483);
+  background-color: rgba(255, 255, 255, 0.302);
+  border-radius: 10px;
+  padding: 30px 20px;
+  width: 88%;
+  max-width: 1200px;
+}
+
+.home-content {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 15px;
+  justify-content: space-between;
+  width: 92%;
+  max-width: 1200px;
+}
+
+.home-content > div {
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.641);
+  width: 48%;
+  min-width: 280px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 685px) {
+  .home-content > div {
+    width: 100%;
+    min-width: none;
+  }
+}

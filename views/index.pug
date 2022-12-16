@@ -1,5 +1,20 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div.index-wrapper
+    div.title-container
+      h1= title
+      img.book-img(src="/images/book-ribbon.png", alt="Present")
+    li.btn.sign-up-btn(style="list-style: none")
+      a(href="/register") Sign Up 
+
+    p Register with GiftID and you can: 
+    
+    ul 
+      li - Set general present/gift preferences
+      li - List specific items you are looking for
+      li - Include helpful links for friends and family unsure what to get you 
+      li - Search for other users' gift preferences or requested items 
+      li - Mark friends' gifts as purchased or claimed by you 
+        em(style="color: red") showing that gift marked as purchased to all other users
+        strong(style="color: maroon")  who are not the gift-reciever

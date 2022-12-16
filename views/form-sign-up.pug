@@ -1,0 +1,91 @@
+extends layout  
+
+block content 
+  if errors 
+    ul 
+      for error in errors 
+        li!= error.msg
+
+  if error 
+    li= error 
+
+  form.form-wrapper(method='POST' action='') 
+    h2(style="text-align:center")= title
+    
+    div.form-control 
+      label(for="username" style="margin-left:15px") Email
+      input#username(type="email" name="username" required='true' placeholder='person@email.com')
+
+    div.form-control 
+      label(for="firstName" style="margin-left:15px") First Name
+      input#firstName(type="text" name="firstName" required='true' placeholder='Benedict')
+
+    div.form-control 
+      label(for="lastName" style="margin-left:15px") Last Name
+      input#lastName(type="text" name="lastName"  required='true' placeholder='Cumberbatch')
+
+    div.form-control.birthdate 
+      p(style="margin-left:15px") Birthday
+      div
+        select#birthMonth(name="birthMonth" style="flex-grow:3;border-radius:5px" required)
+          option(value="" selected disabled style="color:red") Month
+          option(value="1") January 
+          option(value="2") February 
+          option(value="3") March
+          option(value="4") April 
+          option(value="5") May 
+          option(value="6") June
+          option(value="7") July
+          option(value="8") August
+          option(value="9") September
+          option(value="10") October
+          option(value="11") November
+          option(value="12") December
+          
+        select#birthDay(name="birthDay" style="flex-grow:2;border-radius:5px" required)
+          option(value="" selected disabled) Day
+          option(value="1") 1
+          option(value="2") 2
+          option(value="3") 3
+          option(value="4") 4
+          option(value="5") 5
+          option(value="6") 6
+          option(value="7") 7
+          option(value="8") 8
+          option(value="9") 9
+          option(value="10") 10
+          option(value="11") 11
+          option(value="12") 12
+          option(value="13") 13
+          option(value="14") 14
+          option(value="15") 15
+          option(value="16") 16
+          option(value="17") 17
+          option(value="18") 18
+          option(value="19") 19
+          option(value="20") 20
+          option(value="21") 21
+          option(value="22") 22
+          option(value="23") 23
+          option(value="24") 24
+          option(value="25") 25
+          option(value="26") 26
+          option(value="27") 27
+          option(value="28") 28
+          option(value="29") 29
+          option(value="30") 30
+          option(value="31") 31
+
+  
+    div.form-control 
+      label(for="password" style="margin-left:15px") Password 
+      span(style="font-size:.6rem;margin-left:15px;margin-top:-10px") ⌞ Basically zero requirements for password here, just don't leave empty
+      input#password(type="password" name="password"  required='true' placeholder='********')
+
+    div.form-control 
+      label(for="passConfirm" style="margin-left:15px") Confirm Password
+      input#passConfirm(type="password" name="passConfirm"  required='true' placeholder='********')
+
+    div.form-control-btns 
+      a(href="/") Cancel
+      button.btn(type="submit" style="margin-left:10px") Submit

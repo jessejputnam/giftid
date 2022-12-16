@@ -1,0 +1,25 @@
+extends layout 
+
+block content
+  if errors.length > 0
+    ul
+      for error of errors
+        if error === "Incorrect username"
+          li No account was found with that email
+        else
+          li= error
+  if error 
+    p= error
+
+  form.form-wrapper(method='POST' action='') 
+    h2(style='text-align:center')= title 
+    div.form-control 
+      label(for='username' style='margin-left:15px') Email 
+      input#username(type="email" name='username' required='true' placeholder='email@email.com')
+    div.form-control 
+      label(for='password' style='margin-left:15px') Password 
+      input#password(type="password" name='password' required='true' placeholder='********')
+
+    div.form-control-btns 
+      a(href="/") Cancel
+      button.btn(type="submit") Submit

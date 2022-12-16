@@ -8,7 +8,8 @@ const GiftSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: "User", required: true },
   gifter: { type: Schema.Types.ObjectId, ref: "User" },
   isClaimed: { type: Boolean, required: true, default: false },
-  link: { type: String }
+  link: { type: String },
+  notes: [{ type: String }]
 });
 
 module.exports = mongoose.model("Gift", GiftSchema);

@@ -13,7 +13,7 @@ html
 
     link(rel="preconnect" href="https://fonts.googleapis.com")
     link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
-    link(href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Indie+Flower&family=Passions+Conflict&display=swap" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=News+Cycle:wght@400;700&family=Passions+Conflict&display=swap" rel="stylesheet")
 
     link(rel='stylesheet', href='/stylesheets/style.css')
 
@@ -23,19 +23,22 @@ html
   body
     header 
       div.header-wrapper 
-        img.logo(src="/images/logo.png", alt="")
+        a(href="/")
+          img.logo(src="/images/logo.png", alt="")
         div 
           nav 
-            ul.header-nav 
-              li.header-btn 
-                a(href="#") Home 
-              li.header-btn 
-                a(href="#") Search  
-              li.header-btn
-                if currentUser 
-                  a(href="#") Logout 
-                else 
-                  a(href="#") Login 
+            if currentUser
+              ul.header-nav 
+                li.btn 
+                  a(href="/my-list") My List 
+                li.btn 
+                  a(href="/search") Search  
+                li.btn
+                  a(href="/logout") Logout 
+            else 
+              ul.header-nav-noauth
+                li.btn(style="align-self: flex-end")
+                  a(href="/login") Login 
                 
 
 

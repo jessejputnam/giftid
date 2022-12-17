@@ -12,13 +12,14 @@ block content
       div
         h3(style="text-decoration:underline") My General Gift Hints  
           span(style="margin-left:10px") 
-            a(href="/edit-preferences" style="font-size:0.9rem") | Edit Your Gift Hints |
+            a(href="/home/gift-preferences" style="font-size:0.9rem") | Edit Your Gift Hints |
         p I generally like...
-        div 
-          p= currentUser.gift_preferences
+        ul  
+          each preference in currentUser.gift_preferences 
+            li(style="margin-left:10px")= "✓ " + preference
       div 
         h3(style="text-decoration:underline") Gifts I'm Buying 
         ul 
           each gift in currentUser.gifted_items
-            p= gift.name
+            li= gift.name
 

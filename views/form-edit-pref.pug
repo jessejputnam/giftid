@@ -1,15 +1,39 @@
 extends layout 
 
+block scripts  
+  script(type="module" src="/javascripts/edit-prefs.js" defer)
+
 block content
-  if error 
-    p= error
+  div.preferences-container
+    if error 
+      p= error
 
-  form.form-wrapper(method='POST' action='') 
-    h2(style='text-align:center')= title 
-    div.form-control 
-      label(for='text' style='margin-left:15px') Email 
-      textarea#text(name="text", cols="30", rows="10" placeholder="Spicy foods") 
+    div.pref-section
+      h2 Edit Gift Preferences 
+      p Here, you can add/delete any general gift preferences you may have. 
+      p(style="font-size:0.8rem") ex. videogames for the Nintendo Switch ||OR|| Satin clothing, size: small ||OR|| Hoop earings larger than 3" 
 
-    div.form-control-btns 
-      a(href="/") Cancel
-      button.btn(type="submit") Submit
+    div.pref-section
+      h3 I generally like...
+      div#current-preference-container.form-wrapper
+        ul(style="list-style:disc;padding-left:20px") 
+          each preference, index in currentUser.gift_preferences
+            li
+              h4= preference
+              form(method="POST" action="/home/delete-preference") 
+                input#index(type="hidden" value=index name="index")
+                button.btn.btn-delete(type="submit") Delete
+            if index !== currentUser.gift_preferences.length -1 
+              hr(style="margin:5px 0")
+
+    div.pref-section
+      h3 Add a preference
+      form.form-wrapper(method='POST' action='') 
+
+        div.form-control 
+          label(for='preference' style='margin-left:15px') New Preference:
+          input#preference(type="text" name="preference" placeholder="Spicy foods" autofocus) 
+
+        div.form-control-btns 
+          a(href="/") Cancel
+          button.btn(type="submit") Add Preference

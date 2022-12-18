@@ -1,0 +1,11 @@
+extends layout 
+
+block content 
+  h2 My Wish List 
+
+  each gift in currentUser.my_gift_list
+    div.gift 
+      h3= gift.name 
+      if gift.link 
+        a(href=gift.link)
+      p= gift.notes

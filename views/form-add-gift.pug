@@ -1,0 +1,23 @@
+extends layout 
+
+block content 
+  if error 
+    p= error
+
+  form.form-wrapper(method='POST' action='') 
+    h2(style='text-align:center')= title 
+    div.form-control 
+      label(for='name' style='margin-left:15px') Gift item: 
+      input#name(type="text" name='name' required='true' placeholder='Name of gift here')
+      
+    div.form-control 
+      label(for='url' style='margin-left:15px') Specific Link (optional): 
+      input#url(type="text" name='url' placeholder='www.amazon.com/category/item/0183918')
+      
+    div.form-control 
+      label(for='notes' style='margin-left:15px') Notes (optional): 
+      input#notes(type="text" name='notes' placeholder='I prefer them in green, but blue is also fine')
+
+    div.form-control-btns 
+      a(href="/") Cancel
+      button.btn(type="submit") Add gift

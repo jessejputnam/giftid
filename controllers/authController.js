@@ -4,6 +4,7 @@ const passport = require("passport");
 const { body, validationResult } = require("express-validator");
 
 const User = require("../models/user");
+const Gift = require("../models/gift");
 
 // ######################################################
 // ######################################################
@@ -20,11 +21,18 @@ exports.index_get = (req, res, next) => {
 
 // Display user home page on GET
 exports.home_get = async (req, res, next) => {
-  return res.render("home", {
-    title: "GiftID"
-    // my_gifts: ,
-    // friends_gifts: ,
-  });
+  const userId = req.user._id;
+
+  try {
+    const friends_gifts = await Gift.find({ gifter: userId });
+
+    return res.render("home", {
+      title: "GiftID",
+      friends_gifts
+    });
+  } catch (err) {
+    return next(err);
+  }
 };
 
 // ################# Registration ##################

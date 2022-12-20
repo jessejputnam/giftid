@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 const GiftSchema = new Schema({
   name: { type: String, required: true },
   user: { type: Schema.Types.ObjectId, ref: "User", required: true },
-  gifter: { type: Schema.Types.ObjectId, ref: "User" },
+  gifter: { type: Schema.Types.ObjectId, ref: "User", default: null },
   isClaimed: { type: Boolean, required: true, default: false },
   link: { type: String },
   notes: [{ type: String }]

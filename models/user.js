@@ -25,10 +25,8 @@ const UserSchema = new Schema(
     birth_day: { type: Number, required: true },
 
     friend_list: [{ type: Schema.Types.ObjectId, ref: "User" }],
-    gifted_items: [{ type: Schema.Types.ObjectId, ref: "Gift" }],
 
-    gift_preferences: [{ type: String }],
-    my_gift_list: [{ type: Schema.Types.ObjectId, ref: "Gift" }]
+    gift_preferences: [{ type: String }]
   },
   { timestamps: true }
 );

@@ -1,11 +1,19 @@
 extends layout 
 
 block content 
-  h2 My Wish List 
+  div.gift-list-wrapper
+    h2 My Wish List 
 
-  each gift in currentUser.my_gift_list
-    div.gift 
-      h3= gift.name 
-      if gift.link 
-        a(href=gift.link)
-      p= gift.notes
+    div.btn(style="width:150px") 
+      a(href="/home/add-gift") Add Gift to List
+
+    div.my-list
+      each gift in my_gifts
+        div.gift 
+          h3= gift.name 
+          if gift.link 
+            a.buy-link(href=gift.link target="_blank" noreferrer) [Buy Link]
+          p= gift.notes
+
+          - console.log(gift)
+          a.btn(href=`/gift/${String(gift._id)}/delete` style="padding:2px 5px;font-size:0.9rem") Delete Gift

@@ -21,18 +21,25 @@
 /* --------------------- FORMATTING --------------------- */
 
 * {
+  box-sizing: border-box;
   font-family: "News Cycle", sans-serif;
   padding: 0;
   margin: 0;
 }
 
-button {
+.content-wrapper button {
   font-size: 1rem;
 }
 
 body {
   font-size: 16px;
   background-color: #ffc8dd79;
+}
+
+button {
+  border: none;
+  margin: 0;
+  color: rgb(86, 86, 86);
 }
 
 a {
@@ -105,7 +112,6 @@ textarea {
     #ffafcc,
     #ffafcc
   );
-  background-color: #ffafcc;
   padding: 10px 10px;
   border-radius: 10px;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.737);
@@ -167,6 +173,7 @@ header {
   margin: 15px;
   height: 100%;
   position: relative;
+  min-height: 50vh;
 }
 
 @media only screen and (max-width: 500px) {
@@ -276,6 +283,7 @@ header {
 }
 
 /* ----------------- Edit Preferences ----------------- */
+
 .preferences-container {
   display: flex;
   flex-direction: column;
@@ -301,4 +309,51 @@ header {
 
 .btn-delete {
   padding: 3px 10px;
+}
+
+/* ----------------- My Wish List ----------------- */
+.gift-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.my-list {
+  background: #cdb4db6c;
+  border-radius: 5px;
+  padding: 30px 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+@media only screen and (max-width: 670px) {
+  .my-list {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.gift {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.578);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.67);
+  width: 280px;
+}
+
+.buy-link {
+  color: #e63946;
+}
+
+@media (hover: hover) {
+  .buy-link:hover {
+    color: rgb(255, 0, 255);
+  }
 }

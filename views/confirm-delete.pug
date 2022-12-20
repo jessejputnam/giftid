@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  div.confirm-delete-wrapper
+    h1 Confirm Delete 
+
+    p Do you want to delete #{gift.name}?
+
+    form(method="POST" action="") 
+      button.btn(type="submit") Delete Gift

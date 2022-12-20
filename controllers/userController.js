@@ -32,9 +32,14 @@ exports.gift_preferences_delete = async (req, res, next) => {
   const i = req.body.index;
   const prefs = req.user.gift_preferences;
   prefs.splice(i, 1);
-  const user = await User.findById(req.user._id);
-  user.gift_preferences = prefs;
-  await user.save();
 
-  res.redirect("/home/gift-preferences");
+  try {
+    const user = await User.findById(req.user._id);
+    user.gift_preferences = prefs;
+    await user.save();
+
+    return res.redirect("/home/gift-preferences");
+  } catch (err) {
+    return next(err);
+  }
 };

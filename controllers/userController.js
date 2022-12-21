@@ -1,9 +1,10 @@
 "use strict";
 
-const passport = require("passport");
-const { body, validationResult } = require("express-validator");
+const getAstro = require("../utils/astroConvert");
+const getMonth = require("../utils/monthConverter");
 
 const User = require("../models/user");
+const Gift = require("../models/gift");
 
 // ######################################################
 // ######################################################
@@ -39,6 +40,38 @@ exports.gift_preferences_delete = async (req, res, next) => {
     await user.save();
 
     return res.redirect("/home/gift-preferences");
+  } catch (err) {
+    return next(err);
+  }
+};
+
+exports.user_page_get = async (req, res, next) => {
+  const id = req.params.id;
+
+  // If own page, reroute to home
+  if (String(req.user._id) === id) {
+    return res.redirect("/home");
+  }
+
+  try {
+    const user_promise = User.findById(id);
+    const user_gifts_promise = Gift.find({ user: id });
+
+    const [user, user_gifts] = await Promise.all([
+      user_promise,
+      user_gifts_promise
+    ]);
+
+    const title =
+      user.firstname[0].toUpperCase() + user.firstname.slice(1) + "'s Gift ID";
+
+    return res.render("user-page", {
+      title,
+      user,
+      user_gifts,
+      user_month: getMonth(user.birth_month),
+      user_astro: getAstro(user.birth_month, user.birth_day)
+    });
   } catch (err) {
     return next(err);
   }

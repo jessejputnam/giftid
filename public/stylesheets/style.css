@@ -357,3 +357,51 @@ header {
     color: rgb(255, 0, 255);
   }
 }
+
+.search-form {
+}
+
+.card-container {
+  width: 100%;
+  max-width: 600px;
+  background-image: repeating-radial-gradient(
+    ellipse at bottom right,
+    #ee5f7c,
+    #f56d88 40%
+  );
+  padding: 25px 15px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  color: rgb(233, 233, 233);
+  text-shadow: 1px 1px 1px black;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.533);
+}
+
+.card-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.user-info-container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.photo {
+  width: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.photo > img {
+  width: 100%;
+}
+
+.date-info {
+  margin-right: 5vw;
+  margin-top: 5px;
+}

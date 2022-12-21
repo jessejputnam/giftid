@@ -1,0 +1,29 @@
+extends layout 
+
+block content 
+  h2= title
+
+  div.card-container
+    div.card-top
+      div.user-info-container
+        div.photo 
+          img(src="https://images.unsplash.com/photo-1633683788845-e9db07766e42?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80", alt="Gift Id Photo")
+        div.name 
+          h3= user.firstname[0].toUpperCase() + user.firstname.slice(1) 
+          h3= user.lastname[0].toUpperCase() + user.lastname.slice(1) 
+      
+      div.date-info  
+        h3 Birthday: 
+        p= user_month + " " + user.birth_day
+        p 
+          em= user_astro
+
+    hr(style="margin:10px 0")      
+    
+    div 
+      h4 General Gift Preferences
+      ul  
+        each pref in user.gift_preferences 
+          li(style="margin-left:10px")= "✓ " + pref
+
+  div.gifts-container

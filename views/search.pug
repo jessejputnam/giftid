@@ -1,0 +1,33 @@
+extends layout 
+
+block content 
+
+  div.search-form
+    h1= title
+    form.form-control(method="GET" action="")
+      input#firstName(type="text" name="firstName" placeholder="First name" autofocus)
+      input#lastName(type="text" name="lastName" placeholder="Last name")
+      button.btn.btn-search Search
+
+
+  if results
+    hr(style="margin:25px")
+    div.results-container   
+      if results[0]
+        div.both-results
+          h3 Results matching both first and last name
+          each user in results[0]
+            p
+              a(href=`/user/${user._id}`) #{user.firstname} #{user.lastname}
+      if results[1]
+        div.first-results
+          h3 Results matching first name
+          each user in results[1] 
+            p 
+              a(href=`/user/${user._id}`) #{user.firstname} #{user.lastname}
+      if results[2]
+        div.last-results
+          h3 Results matching last name
+          each user in results[2] 
+            p
+              a(href=`/user/${user._id}`) #{user.firstname} #{user.lastname}

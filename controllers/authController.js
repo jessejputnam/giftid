@@ -87,8 +87,8 @@ exports.sign_up_post = [
       const user = new User({
         username: req.body.username,
         password: req.body.password,
-        firstname: req.body.firstName,
-        lastname: req.body.lastName,
+        firstname: req.body.firstName.toLowerCase(),
+        lastname: req.body.lastName.toLowerCase(),
         birth_month: req.body.birthMonth,
         birth_day: req.body.birthDay
       });

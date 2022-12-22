@@ -1,5 +1,6 @@
 "use strict";
 
+const User = require("../models/user");
 const Gift = require("../models/gift");
 
 // ######################################################
@@ -47,7 +48,6 @@ exports.add_gift_post = async (req, res, next) => {
 };
 
 exports.delete_gift_get = async (req, res, next) => {
-  console.log("SHCHECHEHHCHDHDH");
   try {
     const gift_id = req.params.id;
 
@@ -68,6 +68,40 @@ exports.delete_gift_post = async (req, res, next) => {
     await Gift.findByIdAndRemove(gift_id);
 
     return res.redirect("/home/my-list");
+  } catch (err) {
+    return next(err);
+  }
+};
+
+exports.claim_gift = async (req, res, next) => {
+  const user_id = req.user._id;
+  const gift_id = req.params.id;
+
+  try {
+    const gift = await Gift.findById(gift_id);
+
+    gift.isClaimed = true;
+    gift.gifter = user_id;
+
+    await gift.save();
+
+    return res.redirect("/home");
+  } catch (err) {
+    return next(err);
+  }
+};
+
+exports.unclaim_gift = async (req, res, next) => {
+  const gift_id = req.params.id;
+
+  try {
+    const gift = await Gift.findById(gift_id);
+
+    gift.isClaimed = false;
+    gift.gifter = null;
+
+    await gift.save();
+    return res.redirect("/home");
   } catch (err) {
     return next(err);
   }

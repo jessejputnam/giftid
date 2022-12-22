@@ -62,8 +62,7 @@ exports.user_page_get = async (req, res, next) => {
       user_gifts_promise
     ]);
 
-    const title =
-      user.firstname[0].toUpperCase() + user.firstname.slice(1) + "'s Gift ID";
+    const title = user.getFullName + "'s Gift ID";
 
     return res.render("user-page", {
       title,

@@ -45,4 +45,18 @@ UserSchema.methods.comparePassword = function (plaintext) {
   return bcrypt.compareSync(plaintext, this.password);
 };
 
+UserSchema.virtual("getFirstName").get(function () {
+  return this.firstname[0].toUpperCase() + this.firstname.slice(1);
+});
+
+UserSchema.virtual("getLastName").get(function () {
+  return this.lastname[0].toUpperCase() + this.lastname.slice(1);
+});
+
+UserSchema.virtual("getFullName").get(function () {
+  return `${
+    this.firstname[0].toUpperCase() + this.firstname.slice(1)
+  } ${this.lastname[0].toUpperCase() + this.lastname.slice(1)}`;
+});
+
 module.exports = mongoose.model("User", UserSchema);

@@ -13,4 +13,8 @@ const GiftSchema = new Schema({
   notes: [{ type: String }]
 });
 
+GiftSchema.virtual("getUrlDomain").get(function () {
+  return this.link.split("//")[1].split("/")[0];
+});
+
 module.exports = mongoose.model("Gift", GiftSchema);

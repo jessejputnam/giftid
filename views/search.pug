@@ -18,16 +18,16 @@ block content
           h3 Results matching both first and last name
           each user in results[0]
             p
-              a(href=`/user/${user._id}`) #{user.firstname} #{user.lastname}
+              a(href=`/user/${user._id}`) #{user.getFullName}
       if results[1]
         div.first-results
           h3 Results matching first name
           each user in results[1] 
             p 
-              a(href=`/user/${user._id}`) #{user.firstname} #{user.lastname}
+              a(href=`/user/${user._id}`) #{user.getFullName}
       if results[2]
         div.last-results
           h3 Results matching last name
           each user in results[2] 
             p
-              a(href=`/user/${user._id}`) #{user.firstname} #{user.lastname}
+              a(href=`/user/${user._id}`) #{user.getFullName}

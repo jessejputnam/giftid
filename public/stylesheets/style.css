@@ -49,6 +49,12 @@ a {
   text-decoration: none;
 }
 
+@media (hover: hover) {
+  a:hover {
+    color: #dd4f83;
+  }
+}
+
 h1 {
   font-family: "Passions Conflict", cursive;
   font-size: 3.5rem;

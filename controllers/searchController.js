@@ -46,6 +46,8 @@ exports.search_get = async (req, res, next) => {
 
     const results = [both_name_results, first_name_results, last_name_results];
 
+    console.log(results);
+
     return res.render("search", {
       title: "Find Someone to Gift!",
       results: results
